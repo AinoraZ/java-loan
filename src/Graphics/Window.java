@@ -5,12 +5,22 @@ import java.awt.*;
 import java.text.NumberFormat;
 import javax.swing.text.NumberFormatter;
 
+/**
+ * Window class responsible for the main program GUI interface window
+ *
+ * @author Ainoras Žukauskas
+ * @version 2018-03-19
+ */
+
 public class Window extends JFrame{
     JPanel mainPane = new JPanel(new BorderLayout());
     JPanel labelPane = new JPanel(new GridLayout(0, 1));
     JPanel fieldPane = new JPanel(new GridLayout(0, 1));
     JPanel endPane = new JPanel(new GridLayout(0, 2));
 
+    /**
+     * The Constructor of Window.
+     */
     public Window(){
         mainPane.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
         mainPane.add(labelPane, BorderLayout.CENTER);
@@ -19,38 +29,71 @@ public class Window extends JFrame{
     }
 
     /* Add To Label Pane */
+    /**
+     * Add Elements to the left of the window
+     * @param obj JFormattedTextField instance
+     */
     public void addToLabelPane(JFormattedTextField obj){
         labelPane.add(obj);
     }
 
+    /**
+     * Add Elements to the left of the window
+     * @param obj JTextField instance
+     */
     public void addToLabelPane(JTextField obj){
         labelPane.add(obj);
     }
 
+    /**
+     * Add Elements to the left of the window
+     * @param obj JLabel instance
+     */
     public void addToLabelPane(JLabel obj){
         labelPane.add(obj);
     }
     /* Add To Label Pane */
 
     /* Add To Field Pane */
+    /**
+     * Add Elements to the right of the window
+     * @param obj JFormattedTextField instance
+     */
     public void addToFieldPane(JFormattedTextField obj){
         fieldPane.add(obj);
     }
 
+    /**
+     * Add Elements to the right of the window
+     * @param obj JTextField instance
+     */
     public void addToFieldPane(JTextField obj){
         fieldPane.add(obj);
     }
 
+    /**
+     * Add Elements to the right of the window
+     * @param obj JLabel instance
+     */
     public void addToFieldPane(JLabel obj){
         fieldPane.add(obj);
     }
 
     /* Add To Field Pane */
 
+    /**
+     * Add Elements to the end of the window
+     * @param obj JButton instance
+     */
     public void addToEndPane(JButton obj){
         endPane.add(obj);
     }
 
+    /**
+     * Add Radio Buttons to one group and to the end of the window
+     * @param objs any number of JRadioButton instances
+     * @return ButtonGroup of the radio buttons
+     */
     public ButtonGroup addToEndPane(JRadioButton... objs){
         if(objs.length == 0)
             return null;
@@ -61,10 +104,12 @@ public class Window extends JFrame{
             buttons.add(obj);
             endPane.add(obj);
         }
-
         return buttons;
     }
 
+    /**
+     * Completes GUI set up and makes GUI visible.
+     */
     public void showUI(){
         this.add(mainPane);
 

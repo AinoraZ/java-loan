@@ -9,6 +9,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DataDump class responsible for dumping loan information into a window.
+ *
+ * @author Ainoras Žukauskas
+ * @version 2018-03-19
+ */
+
 public class DataDump extends JFrame {
     JPanel mainPane;
     JScrollPane scrollPane;
@@ -18,10 +25,16 @@ public class DataDump extends JFrame {
     List<String> dump;
     JPanel topConnect;
 
+    /**
+     * The Constructor of DataDump.
+     */
     public DataDump(){
         reset();
     }
 
+    /**
+     * Resets all the data in the DataDump instance.
+     */
     public void reset(){
         this.getContentPane().removeAll();
         this.repaint();
@@ -52,11 +65,13 @@ public class DataDump extends JFrame {
         scrollPane = new JScrollPane(monthPane);
     }
 
+    /**
+     * Adds the Header panel to the instance, which contains the Total loan amount and the Export button.
+     * @param text string containing %.2f formatted number of the total loan amount.
+     */
     public void addGeneralDate(String text){
         JLabel label = new JLabel(text);
         topPane.add(label);
-
-
         JButton button = new JButton("Export");
         button.addActionListener(new ActionListener() {
             @Override
@@ -89,6 +104,15 @@ public class DataDump extends JFrame {
         topPane.add(button);
     }
 
+    /**
+     * Adds monthly data to the panel instance and saves the data for exporting.
+     * @param month integer of given month
+     * @param repaid the amount of money repaid in the given month
+     * @param percentile the amount of interest paid in the given month
+     * @param total the total amount paid in the given month
+     * @param owned the amount left to repay in the given month
+     * @param strDump formatter String equivalent of provided data
+     */
     public void addMonthly(int month, double repaid, double percentile, double total, double owned, String strDump){
         String string = String.format("%5d", month);
         JLabel label = new JLabel(string);
@@ -113,6 +137,9 @@ public class DataDump extends JFrame {
         dump.add(strDump);
     }
 
+    /**
+     * Completes GUI set up and makes GUI visible.
+     */
     public void showUI(){
         mainPane.add(scrollPane);
         this.add(mainPane);

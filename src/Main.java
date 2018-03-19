@@ -5,11 +5,21 @@ import Graphics.Window;
 import javax.swing.*;
 import java.awt.event.*;
 
+/**
+ * Main class of the program
+ *
+ * @author Ainoras Žukauskas
+ * @version 2018-03-19
+ */
+
 public class Main {
     public static void main(String args[]){
         createGUI();
     }
 
+    /**
+     * Sets up and creates the GUI of the program
+     */
     private static void createGUI(){
         Window win = new Window();
         DataDump dump = new DataDump();
