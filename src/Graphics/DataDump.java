@@ -12,11 +12,11 @@ import java.util.List;
 public class DataDump extends JFrame {
     JPanel mainPane;
     JScrollPane scrollPane;
-    JPanel connectPane;
     JPanel topPane;
     JPanel monthPane;
-    JTextArea monthText;
+    JPanel monthHeader;
     List<String> dump;
+    JPanel topConnect;
 
     public DataDump(){
         reset();
@@ -27,27 +27,29 @@ public class DataDump extends JFrame {
         this.repaint();
 
         mainPane = new JPanel(new BorderLayout());
-        connectPane = new JPanel(new BorderLayout());
         topPane = new JPanel(new GridLayout(0, 2));
+        topConnect = new JPanel(new BorderLayout());
         monthPane = new JPanel(new GridLayout(0, 5));
-        monthText = new JTextArea();
+        monthHeader = new JPanel(new GridLayout(0, 5));
         dump = new ArrayList<String>();
 
         JLabel label = new JLabel("Month");
-        monthPane.add(label);
+        monthHeader.add(label);
         label = new JLabel("Repaid");
-        monthPane.add(label);
+        monthHeader.add(label);
         label = new JLabel("Interest");
-        monthPane.add(label);
+        monthHeader.add(label);
         label = new JLabel("Total");
-        monthPane.add(label);
+        monthHeader.add(label);
         label = new JLabel("Owned");
-        monthPane.add(label);
+        monthHeader.add(label);
 
-        connectPane.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-        mainPane.add(topPane, BorderLayout.PAGE_START);
-        connectPane.add(monthPane, BorderLayout.PAGE_END);
-        scrollPane = new JScrollPane(connectPane);
+        monthPane.setBorder(BorderFactory.createEmptyBorder(10,20,20,20));
+
+        topConnect.add(topPane, BorderLayout.PAGE_START);
+        topConnect.add(monthHeader, BorderLayout.PAGE_END);
+        mainPane.add(topConnect, BorderLayout.PAGE_START);
+        scrollPane = new JScrollPane(monthPane);
     }
 
     public void addGeneralDate(String text){
@@ -119,7 +121,9 @@ public class DataDump extends JFrame {
         this.pack();
 
         Rectangle r = this.getBounds();
-        this.setSize(r.width + 50, 580);
+        if(r.height > 560)
+            r.height = 560;
+        this.setSize(r.width + 50, r.height);
 
         this.setVisible(true);
         setTitle("Data Dump");
