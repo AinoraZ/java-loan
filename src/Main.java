@@ -24,10 +24,10 @@ public class Main {
         Window win = new Window();
         DataDump dump = new DataDump();
 
-        JFormattedTextField amount = win.addLabelFieldPair("Amount", 2);
+        JFormattedTextField amount = win.addLabelFieldPair("Amount", 2, 0);
         JFormattedTextField rate = win.addLabelFieldPair("Rate", 2, 0, 100);
         JFormattedTextField years = win.addLabelFieldPair("Years", -1, 0, 999);
-        JFormattedTextField months = win.addLabelFieldPair("Months", -1, 0, 12);
+        JFormattedTextField months = win.addLabelFieldPair("Months", -1, 0, 11);
 
         JRadioButton linear = new JRadioButton("Linear", true);
         JRadioButton annuity = new JRadioButton("Annuity");
@@ -60,6 +60,7 @@ public class Main {
 
                     dump.addMonthly(x, repaid, percentile, total, loan.amountOwned(x), string);
                 }
+                dump.addMonthlyTotal();
                 dump.showUI();
             }
         });

@@ -19,7 +19,7 @@ public class Window extends JFrame{
     JPanel endPane = new JPanel(new GridLayout(0, 2));
 
     /**
-     * The Constructor of Window.
+     * Sets up the main JPanel for the window instance
      */
     public Window(){
         mainPane.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
@@ -30,7 +30,7 @@ public class Window extends JFrame{
 
     /* Add To Label Pane */
     /**
-     * Add Elements to the left of the window
+     * Add Elements to the left of the window instance
      * @param obj JFormattedTextField instance
      */
     public void addToLabelPane(JFormattedTextField obj){
@@ -38,7 +38,7 @@ public class Window extends JFrame{
     }
 
     /**
-     * Add Elements to the left of the window
+     * Add Elements to the left of the window instance
      * @param obj JTextField instance
      */
     public void addToLabelPane(JTextField obj){
@@ -46,7 +46,7 @@ public class Window extends JFrame{
     }
 
     /**
-     * Add Elements to the left of the window
+     * Add Elements to the left of the window instance
      * @param obj JLabel instance
      */
     public void addToLabelPane(JLabel obj){
@@ -56,7 +56,7 @@ public class Window extends JFrame{
 
     /* Add To Field Pane */
     /**
-     * Add Elements to the right of the window
+     * Add Elements to the right of the window instance
      * @param obj JFormattedTextField instance
      */
     public void addToFieldPane(JFormattedTextField obj){
@@ -64,7 +64,7 @@ public class Window extends JFrame{
     }
 
     /**
-     * Add Elements to the right of the window
+     * Add Elements to the right of the window instance
      * @param obj JTextField instance
      */
     public void addToFieldPane(JTextField obj){
@@ -72,7 +72,7 @@ public class Window extends JFrame{
     }
 
     /**
-     * Add Elements to the right of the window
+     * Add Elements to the right of the window instance
      * @param obj JLabel instance
      */
     public void addToFieldPane(JLabel obj){
@@ -82,7 +82,7 @@ public class Window extends JFrame{
     /* Add To Field Pane */
 
     /**
-     * Add Elements to the end of the window
+     * Add Elements to the end of the window instance
      * @param obj JButton instance
      */
     public void addToEndPane(JButton obj){
@@ -90,7 +90,7 @@ public class Window extends JFrame{
     }
 
     /**
-     * Add Radio Buttons to one group and to the end of the window
+     * Add Radio Buttons to one group and to the end of the window instance
      * @param objs any number of JRadioButton instances
      * @return ButtonGroup of the radio buttons
      */
@@ -123,12 +123,19 @@ public class Window extends JFrame{
         setTitle("Loan calculator");
     }
 
-    public JFormattedTextField addLabelFieldPair(String labelStr, int precision, int... maxMin){
+    /**
+     * Adds a label-field pair to the window instance.
+     * @param labelStr Label of the number field.
+     * @param precision Absolute precision of the number in the field. If precision is negative, no precision is defined.
+     * @param minMax 1 or 2 integers defining the minimum and maximum allowed values. If minimum is not given, no minimum is defined. If maximum is negative or not given, no maximum is defined.
+     * @return Created JFormattedTextField instance
+     */
+    public JFormattedTextField addLabelFieldPair(String labelStr, int precision, int... minMax){
         JLabel label = new JLabel(labelStr);
 
         NumberFormat nFormat = NumberFormat.getNumberInstance();
-        double min = (maxMin.length == 1)? maxMin[0] : 0;
-        double max = (maxMin.length == 2)? maxMin[1] : -1;
+        double min = (minMax.length == 1)? minMax[0] : 0;
+        double max = (minMax.length == 2)? minMax[1] : -1.0;
         NumberFormatter nFormatter;
         if(precision >= 0) {
             nFormat.setParseIntegerOnly(false);

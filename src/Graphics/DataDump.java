@@ -25,8 +25,13 @@ public class DataDump extends JFrame {
     List<String> dump;
     JPanel topConnect;
 
+    double repaid = 0;
+    double interest = 0;
+    double total = 0;
+    double owned = 0;
+
     /**
-     * The Constructor of DataDump.
+     * Initializes all variables needed for data dumping.
      */
     public DataDump(){
         reset();
@@ -56,6 +61,11 @@ public class DataDump extends JFrame {
         monthHeader.add(label);
         label = new JLabel("Owned");
         monthHeader.add(label);
+
+        repaid = 0;
+        interest = 0;
+        total = 0;
+        owned = 0;
 
         monthPane.setBorder(BorderFactory.createEmptyBorder(10,20,20,20));
 
@@ -116,6 +126,7 @@ public class DataDump extends JFrame {
     public void addMonthly(int month, double repaid, double percentile, double total, double owned, String strDump){
         String string = String.format("%5d", month);
         JLabel label = new JLabel(string);
+
         monthPane.add(label);
 
         string = String.format("%.2f", repaid);
@@ -134,7 +145,41 @@ public class DataDump extends JFrame {
         label = new JLabel(string);
         monthPane.add(label);
 
+        this.repaid += repaid;
+        this.interest += percentile;
+        this.total += total;
+
         dump.add(strDump);
+    }
+
+    /**
+     * Adds the absolute total of all different categories for all months.
+     */
+    public void addMonthlyTotal(){
+        String string = "Total";
+        JLabel label = new JLabel(string);
+
+        monthPane.add(label);
+
+        string = String.format("%.2f", this.repaid);
+        label = new JLabel(string);
+        monthPane.add(label);
+
+        string = String.format("%.2f", this.interest);
+        label = new JLabel(string);
+        monthPane.add(label);
+
+        string = String.format("%.2f", this.total);
+        label = new JLabel(string);
+        monthPane.add(label);
+
+        string = String.format("%.2f", this.owned);
+        label = new JLabel(string);
+        monthPane.add(label);
+
+        String strDump = String.format("Total: Repaid: %-8.2f  Interest: %-8.2f Total: %-8.2f  Owned: %-15.2f\n", this.repaid, this.interest, this.total, this.owned);
+        dump.add(strDump);
+
     }
 
     /**
@@ -150,7 +195,7 @@ public class DataDump extends JFrame {
         Rectangle r = this.getBounds();
         if(r.height > 560)
             r.height = 560;
-        this.setSize(r.width + 50, r.height);
+        this.setSize(r.width + 80, r.height);
 
         this.setVisible(true);
         setTitle("Data Dump");

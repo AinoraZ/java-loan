@@ -11,7 +11,7 @@ public class LinearLoan extends Loan{
     private double loanWanted;
 
     /**
-     * The Constructor of LinearLoan.
+     * Initialises all needed parameters for loan calculations.
      * @param loanWanted double value of the amount of money wanted
      * @param yearlyPercent double value of the yearly interest rate
      * @param loanYears int value of the loan duration in years

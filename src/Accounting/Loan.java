@@ -58,6 +58,8 @@ public class Loan {
     }
 
     /**
+     * Method for overriding
+     * <p>
      * Calculates the amount of money to pay for a given month
      * @param month int value of a given month
      * @return double value rounded to 2 decimal places of the the amount needed to pay for given month
@@ -67,6 +69,8 @@ public class Loan {
     }
 
     /**
+     * Method for overriding
+     * <p>
      * Calculates the amount of money to pay for a given mont
      * @return int value of the total loan period in months
      */
@@ -75,6 +79,8 @@ public class Loan {
     }
 
     /**
+     * Method for overriding
+     * <p>
      * Calculates the amount of money repaid for a given month
      * @param month int value of a given month
      * @return double value rounded to 2 decimal places of the amount repaid for a given month
@@ -84,6 +90,8 @@ public class Loan {
     }
 
     /**
+     * Method for overriding
+     * <p>
      * Calculates the amount of money still needed to be repaid for a given month
      * @param month int value of a given month
      * @return double value rounded to 2 decimal places of the amount still needed to be repaid for a given month
@@ -93,6 +101,8 @@ public class Loan {
     }
 
     /**
+     * Method for overriding
+     * <p>
      * Calculates the amount of money needed to be paid throughout the loan period
      * @return double value rounded to 2 decimal places of the total amount needed to be paid throughout the loan period
      */

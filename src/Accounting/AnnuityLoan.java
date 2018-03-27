@@ -10,7 +10,7 @@ package Accounting;
 public class AnnuityLoan extends Loan {
 
     /**
-     * The Constructor of AnnuityLoan.
+     * Initialises all needed parameters
      * @param loanWanted double value of the amount of money wanted
      * @param yearlyPercent double value of the yearly interest rate
      * @param loanYears int value of the loan duration in years
